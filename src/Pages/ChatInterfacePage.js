@@ -1,4 +1,5 @@
 import ChatWindow from "../Components/ChatWindow";
+import Navbar from "../Components/Navbar";
 import UserSidebar from "../Components/UserSidebar";
 import './ChatInterfacePage.css'
 

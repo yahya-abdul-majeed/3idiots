@@ -1,3 +1,4 @@
+import ChatMessage from './ChatMessage'
 import './ChatWindow.css'
 
 export default function ChatWindow(){
@@ -11,7 +12,12 @@ export default function ChatWindow(){
             </div>
         </div>
         <div className='messageInterface'>
-
+            <ChatMessage/>
+            <ChatMessage/>
+            <ChatMessage/>
+            <ChatMessage/>
+            <ChatMessage/>
+            <ChatMessage/>
         </div>
         <div className='typeBar'>
             <input type='search'/>  

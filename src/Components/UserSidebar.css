@@ -1,0 +1,5 @@
+.UserSidebarMain{
+    display: grid;
+    grid-template-rows: 5% 95%;
+    background-color: blue;
+}
