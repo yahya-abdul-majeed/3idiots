@@ -1,0 +1,19 @@
+.UserAvatarAndNameMain{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    color: white;
+    border-radius: 5px;
+    background-color: #1e2124;
+    margin: 0px;
+}
+
+img{
+    margin-top:2px;
+    margin-bottom:2px;
+}
+
+.name{
+
+}

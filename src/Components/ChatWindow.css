@@ -1,0 +1,51 @@
+.ChatWindowMain{
+    display: grid;
+    grid-template-rows: 10% 80% 10%;
+    margin: 0px;
+}
+
+.typeBar{
+    grid-row: 3;
+    background-color: 424549;
+    display: grid;
+    grid-template-columns: 90% 5% 5%;
+    justify-items: center;
+    align-items: center;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.infoBar{
+    display: grid;
+    grid-template-columns: 12% 88%;
+    align-items: center ;
+    grid-row: 1;
+    background-color: #1e2124;
+}
+.infoBar > img{
+    margin: 10px;
+    margin-left: 30px;
+}
+
+.infoBar  p{
+    margin: 0px;
+    padding: 0px;
+}
+
+.typeBar > input {
+    grid-column: 1;
+    width: 99%;
+    height: 96%;
+    opacity: 1;
+    background-color: #424549;
+    border-radius: 10px;
+    color: white;
+}
+
+
+.messageInterface{
+    background-color: #c8bfe0;
+    grid-row: 2;
+    border-radius: 10px;
+    margin: 15px;
+}
