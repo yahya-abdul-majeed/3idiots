@@ -2,48 +2,35 @@ import ChatMessage from './ChatMessage'
 import axios from 'axios';
 import { useEffect, useState } from "react";
 import './ChatWindow.css'
+import { event } from 'jquery';
 
-export default function ChatWindow(){
-    const [query,setQuery] = useState('')
-    const [reply, setReply]= useState('')
-    console.log("this is reply",reply)
+export default function ChatWindow({user,chattingTo,dms, currentRoom, chatim, reloadMsgs}){
+
+    const [message, setMessage] = useState('')
     
 
-    const promptURL = "http://ec2-43-207-224-175.ap-northeast-1.compute.amazonaws.com:8000/api/knowledge/chat/"
-    const promptOptions = {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json',
-            'Authorization':'Token 34f3e85bfb994a4029865824988e6c0e1fbe13c1'
-        },
-        body: JSON.stringify({
-            query
-        })
+    const handleMessageInputChange = (event) =>{
+        setMessage(event.target.value)
     }
 
-    const handleSend = (event) =>{
-        axios.post(promptURL,JSON.stringify({
-            query: query
-        }),{
+    const handleMessageSubmit = () => {
+        let headers = {
             headers: {
-                'content-type': 'application/json',
-                'Authorization':'Token 34f3e85bfb994a4029865824988e6c0e1fbe13c1'
+                'X-Auth-Token': user.authToken,
+                'X-User-ID': user.userId,
+                'content-type': 'application/json'
             }
-        })
-        .then(res=> res.data)
-        .then(data => setReply(data.answer))
-    }
+        }
+        let data = {
+            'message':{
+                'rid':currentRoom,
+                'msg': message
+            }
+        }
 
-    useEffect(()=>{
-
-    },[reply,handleSend])
-
-    
-
-
-    const handleChangeForPrompt = (event) =>{
-        setQuery(event.target.value)
-        console.log(query)
+        axios.post("https://rocketchat.smkt.fun/api/v1/chat.sendMessage",data,headers)
+        setMessage('')
+        reloadMsgs(chatim)
     }
 
     return(<div className=" ChatWindowMain col-9" style={{background:"#282b30",color:"white"}}>
@@ -57,13 +44,15 @@ export default function ChatWindow(){
             </div>
         </div>
         <div className='messageInterface'>
-            <ChatMessage answer={reply}/>
+            {
+                dms?.reverse().map(dm=> <ChatMessage dm={dm}/>)
+            }
             
         </div>
         <div className='typeBar'>
-            <input value={query} onChange={handleChangeForPrompt} type='search' placeholder='enter prompt'/>  
+            <input value={message} onChange={handleMessageInputChange} id="message" type='search' placeholder='enter prompt'/>  
             <span style={{gridColumn:2,color:'white'}}><i class="bi bi-plus-circle"></i></span>  
-            <span onClick={handleSend} style={{gridColumn:3,color:'white'}}><i class="bi bi-send-fill"></i></span>  
+            <span onClick={handleMessageSubmit} style={{gridColumn:3,color:'white'}}><i class="bi bi-send-fill"></i></span>  
         </div>
     </div>)
 }

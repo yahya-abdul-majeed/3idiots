@@ -1,36 +1,20 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 
-export default function Register() {
-    const [formData,setFormData] = useState({
-        username:'',
-        email:'',
-        pass:'',
-        name:''
-    })
-    const url = "https://rocketchat.smkt.fun//api/v1/users.register"
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-    };
+export default function Register({handleChange,handleSubmit, formData}) {
+   
 
-
-    const handleChange = (event) =>{
-        setFormData((prevState)=>({
-            ...prevState,
-            [event.target.id]: event.target.value            
-        }))
-    }
-
-
-
-  const handleSubmit= (event) => {
-    event.preventDefault();
-    console.log(formData)
-    fetch(url,requestOptions)
-    .then(response => console.log(response))
+  // const handleSubmit= (event) => {
+  //   event.preventDefault();
+  //   console.log(formData)
+  //   // fetch(url,requestOptions)
+  //   // .then(response => console.log(response))
+  //   axios.post(url,JSON.stringify(formData),{
+  //     headers: { 'Content-Type': 'application/json' }
+  //   })
+  //   .then(res=> console.log(res.data))
     
-  }
+  // }
 
   return (
     <div className="container w-25 text-white mt-5">
