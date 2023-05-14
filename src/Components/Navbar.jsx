@@ -11,5 +11,8 @@ export default function Navbar(){
         <div className=''>
             <span><i class="bi bi-journal"></i></span>
         </div>
+        <div>
+            <span><i class="bi bi-binoculars"></i></span>
+        </div>
     </div>)
 }
