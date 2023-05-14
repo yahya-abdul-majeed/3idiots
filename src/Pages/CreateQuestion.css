@@ -1,0 +1,50 @@
+select {
+
+  /* styling */
+  background-color: white;
+  border: thin solid blue;
+  border-radius: 4px;
+  display: inline-block;
+  font: inherit;
+  line-height: 1.5em;
+  padding: 0.5em 3.5em 0.5em 1em;
+
+  /* reset */
+
+  margin: 0;      
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+label{
+  padding: 2px 12px;
+  text-align: center;
+  font-size: larger;
+  font-weight: 700;
+}
+
+.codex-editor {
+  background-color: #f4f4f4;
+  border-radius: 12pt;
+}
+
+.codex-editor .ce-block__content .ce-toolbar__content button svg {
+  fill: #ff0000;
+}
+
+.codex-editor .ce-inline-toolbar__item button svg {
+  fill: #00ff00;
+}
+
+.rti--tag {
+  background: black !important;
+  color: whitesmoke;
+  font-weight: 600;
+  font-size: large;
+  max-height: 32px;
+}
+.rti--container {
+  max-height: 48px;
+}
